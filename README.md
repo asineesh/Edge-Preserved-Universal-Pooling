@@ -7,6 +7,15 @@ This work relooks the way pooling is done in CNNs. An exhaustive analysis of the
 
 In the LGCA pooling approach, Gaussian and Laplacian filtering operations are performed on the input feature maps and are concatenated and passed through an attention network. Since the channel dimension is doubled during the concatenation operation, the output from the attention framework is passed through a convolution layer to reduce to the original dimension as the feature map. The attention network is used to remove the redundancy among channels and to bring the focus of the overall network to the most relevant channels in the concatenated output. The architecture for the LGCA approach is as shown above.
 
+**Implementation for Replacing Traditional Max Pooling**
+``` python
+model.maxpool = ConMax(inc, device, size)
+```
+where,
+inc is the number of input channels
+device is the object representing the device on which a torch.Tensor is allocated
+size is the Gaussian Kernel size
+
 # Wavelet based approximate-detailed coefficient concatenation with attention (WADCA)
 <img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Picture2.png' width=500><br>
 
