@@ -11,9 +11,9 @@ In the LGCA pooling approach, Gaussian and Laplacian filtering operations are pe
 ``` python
 model.maxpool = ConMax(inc, device, size)
 ```
-where,
-inc is the number of input channels
-device is the object representing the device on which a torch.Tensor is allocated
+where, <br />
+inc is the number of input channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
 size is the Gaussian Kernel size
 
 # Wavelet based approximate-detailed coefficient concatenation with attention (WADCA)
