@@ -43,7 +43,8 @@ device is the object representing the device on which a torch.Tensor is allocate
 size is the Gaussian Kernel size
 paddingn is equal to 1 if padding is 1, else equal to padding -1
 
-**Implementation for Replacing Traditional Strided Convolution if its followed by Batch Normalization** <br />
+**Implementation for Replacing Traditional Strided Convolution if its followed by Batch Normalization** 
+<br /> 
 This 
 ``` python
 model.conv = nn.Conv2d(inc,outc,size,stride,padding)
