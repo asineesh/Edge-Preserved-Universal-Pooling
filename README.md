@@ -67,3 +67,55 @@ paddingn is equal to 1 if padding is 1, else equal to padding -1
 <img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Picture2.png' width=500><br>
 
 In the WADCA approach, 2D DWT  based on Haar wavelet has been employed for the decomposition of the low and high frequency components. The high frequency components are zeroed and 2D-IDWT is employed with concatenating the approximate and detailed coefficient with zeros. Then, like in the case of LGCA, the feature maps are passed through an attention network followed by a convolution layer. The architecture for the WADCA approach is as shown above.
+
+**Implementation for Replacing Traditional Max Pooling**
+``` python
+model.maxpool = HaarMax(inc, device)
+```
+where, <br />
+inc is the number of input channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
+
+**Implementation for Replacing Traditional Average Pooling**
+``` python
+model.avgpool = HaarAvg(inc, device)
+```
+where, <br />
+inc is the number of input channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
+
+**Implementation for Replacing Traditional Strided Convolution if its followed by ReLU**
+<br />
+This 
+``` python
+model.conv = nn.Conv2d(inc,outc,size,stride,padding)
+model.relu = nn.ReLU()
+```
+can be replaced by 
+``` python
+model.conv = nn.Conv2d(inc,outc,size,stride-1,paddingn)
+model.relu = HaarConv(outc,device)
+```
+where, <br />
+inc is the number of input channels <br />
+outc is the number of output channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
+paddingn is equal to 1 if padding is 1, else equal to padding -1
+
+**Implementation for Replacing Traditional Strided Convolution if its followed by Batch Normalization** 
+<br /> 
+This 
+``` python
+model.conv = nn.Conv2d(inc,outc,size,stride,padding)
+model.bn = nn.ReLU()
+```
+can be replaced by 
+``` python
+model.conv = nn.Conv2d(inc,outc,size,stride-1,paddingn)
+model.relu = HaarConvb(outc,device)
+```
+where, <br />
+inc is the number of input channels <br />
+outc is the number of output channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
+paddingn is equal to 1 if padding is 1, else equal to padding -1
