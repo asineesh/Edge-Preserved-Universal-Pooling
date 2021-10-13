@@ -26,6 +26,7 @@ device is the object representing the device on which a torch.Tensor is allocate
 size is the Gaussian Kernel size
 
 **Implementation for Replacing Traditional Strided Convolution if its followed by ReLU**
+<br />
 This 
 ``` python
 model.conv = nn.Conv2d(inc,outc,size,stride,padding)
