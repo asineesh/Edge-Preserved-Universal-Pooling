@@ -29,38 +29,40 @@ size is the Gaussian Kernel size
 <br />
 This 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride,padding)
+model.conv = nn.Conv2d(inc,outc,filter,stride,padding)
 model.relu = nn.ReLU()
 ```
 can be replaced by 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride-1,paddingn)
+model.conv = nn.Conv2d(inc,outc,filter,stride-1,paddingn)
 model.relu = ConConv(outc,device,size)
 ```
 where, <br />
 inc is the number of input channels <br />
 outc is the number of output channels <br />
 device is the object representing the device on which a torch.Tensor is allocated <br />
-size is the Gaussian Kernel size
+filter is the filter size <br />
+size is the Gaussian Kernel size <br />
 paddingn is equal to 1 if padding is 1, else equal to padding -1
 
 **Implementation for Replacing Traditional Strided Convolution if its followed by Batch Normalization** 
 <br /> 
 This 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride,padding)
+model.conv = nn.Conv2d(inc,outc,filter,stride,padding)
 model.bn = nn.ReLU()
 ```
 can be replaced by 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride-1,paddingn)
+model.conv = nn.Conv2d(inc,outc,filter,stride-1,paddingn)
 model.relu = ConConvb(outc,device,size)
 ```
 where, <br />
 inc is the number of input channels <br />
 outc is the number of output channels <br />
 device is the object representing the device on which a torch.Tensor is allocated <br />
-size is the Gaussian Kernel size
+filter is the filter size <br />
+size is the Gaussian Kernel size <br />
 paddingn is equal to 1 if padding is 1, else equal to padding -1
 
 # Wavelet based approximate-detailed coefficient concatenation with attention (WADCA)
@@ -88,17 +90,18 @@ device is the object representing the device on which a torch.Tensor is allocate
 <br />
 This 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride,padding)
+model.conv = nn.Conv2d(inc,outc,filter,stride,padding)
 model.relu = nn.ReLU()
 ```
 can be replaced by 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride-1,paddingn)
+model.conv = nn.Conv2d(inc,outc,filter,stride-1,paddingn)
 model.relu = HaarConv(outc,device)
 ```
 where, <br />
 inc is the number of input channels <br />
 outc is the number of output channels <br />
+filter is the filter size <br />
 device is the object representing the device on which a torch.Tensor is allocated <br />
 paddingn is equal to 1 if padding is 1, else equal to padding -1
 
@@ -106,16 +109,17 @@ paddingn is equal to 1 if padding is 1, else equal to padding -1
 <br /> 
 This 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride,padding)
+model.conv = nn.Conv2d(inc,outc,filter,stride,padding)
 model.bn = nn.ReLU()
 ```
 can be replaced by 
 ``` python
-model.conv = nn.Conv2d(inc,outc,size,stride-1,paddingn)
+model.conv = nn.Conv2d(inc,outc,filter,stride-1,paddingn)
 model.relu = HaarConvb(outc,device)
 ```
 where, <br />
 inc is the number of input channels <br />
 outc is the number of output channels <br />
+filter is the filter size <br />
 device is the object representing the device on which a torch.Tensor is allocated <br />
 paddingn is equal to 1 if padding is 1, else equal to padding -1
