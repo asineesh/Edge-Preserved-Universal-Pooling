@@ -50,7 +50,7 @@ paddingn is equal to 1 if padding is 1, else equal to padding -1
 This 
 ``` python
 model.conv = nn.Conv2d(inc,outc,filter,stride,padding)
-model.bn = nn.ReLU()
+model.bn = nn.BatchNorm2d()
 ```
 can be replaced by 
 ``` python
@@ -64,6 +64,23 @@ device is the object representing the device on which a torch.Tensor is allocate
 filter is the filter size <br />
 size is the Gaussian Kernel size <br />
 paddingn is equal to 1 if padding is 1, else equal to padding -1
+
+**Implementation for Replacing 1x1 Strided Convolution if its followed by Batch Normalization** 
+<br /> 
+This 
+``` python
+model.conv = nn.Conv2d(inc,outc,1,stride)
+model.bn = nn.BatchNorm2d()
+```
+can be replaced by 
+``` python
+model.conv = nn.Conv2d(inc,outc,1,stride-1)
+model.relu = ConConv1(outc,device)
+```
+where, <br />
+inc is the number of input channels <br />
+outc is the number of output channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
 
 # Wavelet based approximate-detailed coefficient concatenation with attention (WADCA)
 <img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Picture2.png' width=500><br>
@@ -110,7 +127,7 @@ paddingn is equal to 1 if padding is 1, else equal to padding -1
 This 
 ``` python
 model.conv = nn.Conv2d(inc,outc,filter,stride,padding)
-model.bn = nn.ReLU()
+model.bn = nn.BatchNorm2d()
 ```
 can be replaced by 
 ``` python
@@ -123,3 +140,21 @@ outc is the number of output channels <br />
 filter is the filter size <br />
 device is the object representing the device on which a torch.Tensor is allocated <br />
 paddingn is equal to 1 if padding is 1, else equal to padding -1
+
+**Implementation for Replacing 1x1 Strided Convolution if its followed by Batch Normalization** 
+<br /> 
+This 
+``` python
+model.conv = nn.Conv2d(inc,outc,1,stride)
+model.bn = nn.BatchNorm2d()
+```
+can be replaced by 
+``` python
+model.conv = nn.Conv2d(inc,outc,1,stride-1)
+model.relu = HaarConv1(outc,device)
+```
+where, <br />
+inc is the number of input channels <br />
+outc is the number of output channels <br />
+device is the object representing the device on which a torch.Tensor is allocated <br />
+
