@@ -165,4 +165,10 @@ Original Image <br />
 With Traditional Pooling  <br />
 <img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Pictures/Norm2.png' width=200><br>
 
+With LGCA  <br />
+<img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Pictures/Concat2.png' width=200><br>
+
+With WADCA  <br />
+<img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Pictures/Haar2.png' width=200><br>
+
 
