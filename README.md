@@ -158,3 +158,8 @@ inc is the number of input channels <br />
 outc is the number of output channels <br />
 device is the object representing the device on which a torch.Tensor is allocated <br />
 
+# Demonstration of Densenet with different pooling layers using GradCAM
+Original Image
+<img src='https://github.com/TheDarKnight13/Edge-Preserved-Universal-Pooling/blob/main/Pictures/Concat2.png' width=100><br>
+
+
